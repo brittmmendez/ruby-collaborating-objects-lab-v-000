@@ -1,18 +1,18 @@
 class MP3Importer
 
-attr_accessor :path, :file
+attr_accessor :path, :files
 
 def initialize(path)
   @path=path
 end
 
-def files
+def file
   #this link helps explain this: https://stackoverflow.com/questions/46575228/how-to-normalise-the-filename-to-just-the-mp3-filename-with-no-path-ruby
    Dir.chdir(@path) {| path | Dir.glob("*.mp3")}
 end
 
   def import
-  file.each do |filename|
+  files.each do |filename|
       song = Song.new_by_filename(filename)
     end
   end
